@@ -1,6 +1,6 @@
 name = phonebook
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 
-src = phone.cpp
+src = phone.cpp CLASSES/contact.cpp CLASSES/phonebook.cpp
 
 obj = $(src:%.cpp=%.o)
 

@@ -10,6 +10,8 @@ int main(int ac, char **av)
     str = av[i];
     for (std::string::iterator it = str.begin(); it != str.end(); it++)
       std::cout << (char)std::toupper(*it);
+    if (i + 1 != ac)
+      std::cout << ' ';
   }
   std::cout << std::endl;
   return (0);
