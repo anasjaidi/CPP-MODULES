@@ -6,10 +6,14 @@ int main(void)
   std::string cmd;
   while (std::cin.good())
   {
-    std::cout << "enter a command";
+    std::cout << "ENTER A COMMAND: ";
     std::getline(std::cin, cmd);
-    if (cmd.compare("ADD"))
+    if (!cmd.compare("ADD"))
       phone.add();
+    else if (!cmd.compare("SEARCH"))
+      phone.search();
+    else if (!cmd.compare("EXIT"))
+      break ;
   }
   return 0;
 }

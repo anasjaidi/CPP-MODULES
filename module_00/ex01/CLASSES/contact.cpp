@@ -36,7 +36,7 @@ void CONTACT::set_first_name(const std::string &first_name)
 void CONTACT::set_last_name(const std::string &last_name)
 {
   if (!last_name.empty())
-    this->last_name = last_name
+    this->last_name = last_name;
 }
 
 void CONTACT::set_nickname(const std::string &nickname)
@@ -58,3 +58,7 @@ void CONTACT::set_darckest_secret(const std::string &darckest_secret)
 }
 
 
+CONTACT::CONTACT() 
+{
+  return ;
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <iomanip> 
 
 class CONTACT {
   private:
@@ -30,4 +31,5 @@ class PhoneBook {
   public:
     PhoneBook();
     void add(void);
+    void  search(void);
 };
