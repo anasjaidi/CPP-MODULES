@@ -1,9 +1,9 @@
 #include "./Harl.hpp"
 
 
-int main(int argc, char const *argv[])
+int main(void)
 {
   Harl hs ;
-  hs.complain("error");
+  hs.complain("ERROR");
   return 0;
 }

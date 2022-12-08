@@ -1,13 +1,16 @@
 name = Zombie
 flags = -Wall -Wextra -Werror -std=c++98 
-src = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+src =  newZombie.cpp randomChump.cpp Zombie.cpp
 
 obj = $(src:%.cpp=%.o)
 
 all : $(name)
 
-$(name): $(obj) Zombie.hpp
-	g++ $(flags) $(obj) -o $(name)
+$(name): $(obj) main.cpp
+	g++ $(flags) main.cpp  $(obj) -o $(name)
+
+%.o: %.cpp Zombie.hpp
+	g++ $(flags) -c $< -o $@
 
 clean:
 	rm -rf $(obj)
