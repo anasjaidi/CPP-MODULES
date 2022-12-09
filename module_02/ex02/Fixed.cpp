@@ -112,3 +112,24 @@ float Fixed::operator/(const Fixed& n) {
     this->toFloat() / n.toFloat()
   );
 }
+
+Fixed &Fixed::operator++(int) {
+  Fixed tmp = *this;
+  fixed_point++;
+  return (tmp);
+}
+
+Fixed &Fixed::operator++() {
+
+  return (fixed_point++, *this);
+}
+
+Fixed &Fixed::operator--(int) {
+  Fixed tmp = *this;
+  fixed_point--;
+  return (tmp);
+}
+
+Fixed &Fixed::operator--() {
+  return (fixed_point--, *this);
+}

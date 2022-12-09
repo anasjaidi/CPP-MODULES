@@ -6,7 +6,7 @@
 /*   By: ajaidi <ajaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:50:08 by ajaidi            #+#    #+#             */
-/*   Updated: 2022/12/09 18:08:45 by ajaidi           ###   ########.fr       */
+/*   Updated: 2022/12/09 18:14:04 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,10 @@ public:
   float operator - (const Fixed &);
   float operator * (const Fixed &);
   float operator / (const Fixed &);
+  Fixed &operator++();
+  Fixed &operator++(int);
+  Fixed &operator--(int);
+  Fixed &operator--();
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& c);
