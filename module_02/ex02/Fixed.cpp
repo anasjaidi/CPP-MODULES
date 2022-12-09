@@ -64,3 +64,28 @@ std::ostream &operator<<(std::ostream &out, const Fixed &c)
   out << float(c.toFloat());
   return (out);
 }
+
+bool Fixed::operator<(const Fixed& n) {
+  return (this->fixed_point < n.fixed_point);
+}
+
+bool Fixed::operator<=(const Fixed& n) {
+  return (this->fixed_point <= n.fixed_point);
+}
+
+bool Fixed::operator>(const Fixed& n) {
+  return (this->fixed_point > n.fixed_point);
+}
+
+bool Fixed::operator>=(const Fixed& n) {
+  return (this->fixed_point >= n.fixed_point);
+}
+
+bool Fixed::operator==(const Fixed& n) {
+  return (this->fixed_point == n.fixed_point);
+}
+
+bool Fixed::operator!=(const Fixed& n) {
+  return (this->fixed_point != n.fixed_point);
+}
+

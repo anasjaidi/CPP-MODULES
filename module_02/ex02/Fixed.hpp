@@ -6,7 +6,7 @@
 /*   By: ajaidi <ajaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:50:08 by ajaidi            #+#    #+#             */
-/*   Updated: 2022/12/09 17:05:33 by ajaidi           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:49:02 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ public:
   void setRawBits(int const);
   float toFloat(void) const;
   int toInt(void) const;  
+  bool operator < (const Fixed &);
+  bool operator <= (const Fixed &);
+  bool operator > (const Fixed &);
+  bool operator >= (const Fixed &);
+  bool operator == (const Fixed &);
+  bool operator != (const Fixed &);
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& c);
