@@ -6,7 +6,7 @@
 /*   By: ajaidi <ajaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:50:08 by ajaidi            #+#    #+#             */
-/*   Updated: 2022/12/09 18:14:04 by ajaidi           ###   ########.fr       */
+/*   Updated: 2022/12/09 18:31:39 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ public:
   Fixed &operator++(int);
   Fixed &operator--(int);
   Fixed &operator--();
+  static const Fixed &max(const Fixed&, const Fixed&);
+  static Fixed &max(Fixed&, Fixed&);
+  static const Fixed &min(const Fixed&, const Fixed&);
+  static Fixed &min(Fixed&, Fixed&);
 };
 
 std::ostream& operator<<(std::ostream& out, const Fixed& c);

@@ -1,7 +1,6 @@
 #include "./Fixed.hpp"
 
-Fixed::Fixed() : fixed_point(0)
-{
+Fixed::Fixed() : fixed_point(0) {
   std::cout << "Default constructor called" << std::endl;
 }
 
@@ -114,9 +113,9 @@ float Fixed::operator/(const Fixed& n) {
 }
 
 Fixed &Fixed::operator++(int) {
-  Fixed tmp = *this;
+  Fixed *tmp = new Fixed(*this);
   fixed_point++;
-  return (tmp);
+  return (*tmp);
 }
 
 Fixed &Fixed::operator++() {
@@ -125,11 +124,31 @@ Fixed &Fixed::operator++() {
 }
 
 Fixed &Fixed::operator--(int) {
-  Fixed tmp = *this;
+  Fixed *tmp = new Fixed(*this);
   fixed_point--;
-  return (tmp);
+  return (*tmp);
 }
 
 Fixed &Fixed::operator--() {
   return (fixed_point--, *this);
+}
+
+const Fixed &Fixed::max(Fixed const &x, Fixed const &y)
+{
+  return (Fixed)x >= y ? x : y;
+}
+
+Fixed &Fixed::max(Fixed &x, Fixed &y)
+{
+  return x >= y ? x : y;
+}
+
+const Fixed &Fixed::min(Fixed const &x, Fixed const &y)
+{
+  return (Fixed)x <= y ? x : y;
+}
+
+Fixed &Fixed::min(Fixed &x, Fixed &y)
+{
+  return x <= y ? x : y;
 }
