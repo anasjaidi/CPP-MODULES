@@ -112,4 +112,3 @@ float Fixed::operator/(const Fixed& n) {
     this->toFloat() / n.toFloat()
   );
 }
-
