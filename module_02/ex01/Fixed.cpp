@@ -14,7 +14,7 @@ Fixed::Fixed(const int &num)
 Fixed::Fixed(const float &num)
 {
   std::cout << "Float constructor called" << std::endl;
-  fixed_point = num * (1 << 8);
+  fixed_point = roundf(num * (1 << 8));
 }
 
 Fixed::~Fixed()
@@ -38,8 +38,7 @@ int Fixed::getRawBits(void) const
 {
   // std::cout << "getRawBits member function called" << std::endl;
   return (
-    fixed_point
-  );
+      fixed_point);
 }
 
 Fixed::Fixed(const Fixed &src)
@@ -49,15 +48,19 @@ Fixed::Fixed(const Fixed &src)
   *this = src;
 }
 
-int Fixed::toInt(void) const {
+int Fixed::toInt(void) const
+{
   return (fixed_point >> 8);
 }
 
-float Fixed::toFloat(void) const {
-  return float(fixed_point / (1 << 8));
+float Fixed::toFloat(void) const
+{
+  float r = (float(fixed_point) / (1 << 8));
+  return r;
 }
 
-std::ostream &operator<<(std::ostream &out, const Fixed &c) {
-  out << c.toFloat();
+std::ostream &operator<<(std::ostream &out, const Fixed &c)
+{
+  out << float(c.toFloat());
   return (out);
 }

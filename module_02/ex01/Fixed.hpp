@@ -6,12 +6,13 @@
 /*   By: ajaidi <ajaidi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:50:08 by ajaidi            #+#    #+#             */
-/*   Updated: 2022/12/09 16:45:52 by ajaidi           ###   ########.fr       */
+/*   Updated: 2022/12/09 17:05:33 by ajaidi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include <cmath>
 
 class Fixed
 {
