@@ -89,3 +89,27 @@ bool Fixed::operator!=(const Fixed& n) {
   return (this->fixed_point != n.fixed_point);
 }
 
+float Fixed::operator*(const Fixed& n) {
+  return (
+    this->toFloat() * n.toFloat()
+  );
+}
+
+float Fixed::operator-(const Fixed& n) {
+  return (
+    this->toFloat() - n.toFloat()
+  );
+}
+
+float Fixed::operator+(const Fixed& n) {
+  return (
+    this->toFloat() + n.toFloat()
+  );
+}
+
+float Fixed::operator/(const Fixed& n) {
+  return (
+    this->toFloat() / n.toFloat()
+  );
+}
+
