@@ -69,3 +69,26 @@ std::string ClapTrap::getName(void) const {
   return name;
 }
 
+void ClapTrap::attack(const std::string &target) {
+  if (!energyPoints || !healthPoints) {
+    std::cout << "ClapTrap " << name << " can't attack " << target << "!\n";
+    return;
+  }
+  energyPoints--;
+  std::cout << "ClapTrap " << name << " attacks "<< target << ", causing " << attackDamage << " points of damage!\n";
+}
+
+void ClapTrap::beRepaired(unsigned int amount) {
+  if (!energyPoints || !healthPoints) {
+    std::cout << "ClapTrap " << name << " can't be repaired " << "!\n";
+    return;
+  }
+  energyPoints--;
+  std::cout << "ClapTrap " << name << " repaired with "<< amount <<  " amount of health points!\n";
+  healthPoints += amount;
+}
+
+void ClapTrap::takeDamage(unsigned int amount) {
+  std::cout << "ClapTrap " << name << " takes " << amount << " amount of damage!\n";
+  healthPoints -= healthPoints >= amount ? amount : healthPoints;
+}
