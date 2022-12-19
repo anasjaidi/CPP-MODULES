@@ -1,6 +1,6 @@
 name = Fixed
 flags = -Wall -Wextra -Werror -std=c++98 
-src = ClapTrap.cpp 
+src = ClapTrap.cpp ScavTrap.cpp
 
 obj = $(src:%.cpp=%.o)
 

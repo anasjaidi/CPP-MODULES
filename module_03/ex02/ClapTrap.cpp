@@ -1,11 +1,11 @@
 #include "./ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : energyPoints(10), attackDamage(0), healthPoints(10)
+ClapTrap::ClapTrap() : healthPoints(10), energyPoints(10), attackDamage(0)
 {
   std::cout << "Default constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string &name) : energyPoints(10), attackDamage(0), healthPoints(10), name(name)
+ClapTrap::ClapTrap(const std::string &name) : name(name), healthPoints(10), energyPoints(10), attackDamage(0)
 {
   std::cout << "String constructor called" << std::endl;
 }
@@ -90,5 +90,5 @@ void ClapTrap::beRepaired(unsigned int amount) {
 
 void ClapTrap::takeDamage(unsigned int amount) {
   std::cout << "ClapTrap " << name << " takes " << amount << " amount of damage!\n";
-  healthPoints -= healthPoints >= amount ? amount : healthPoints;
+  healthPoints -= healthPoints >= (int)amount ? amount : healthPoints;
 }
