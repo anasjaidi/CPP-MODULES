@@ -10,7 +10,7 @@ protected:
 public:
   public:
   ClapTrap();
-  ClapTrap(std::string &);
+  ClapTrap(const std::string &);
   ClapTrap(const ClapTrap &ClapTrap);
   ~ClapTrap();
   ClapTrap &operator=(const ClapTrap &);
