@@ -28,6 +28,12 @@ Fixed &Fixed::operator=(const Fixed &src)
   return *this;
 }
 
+Fixed::Fixed(const Fixed &src)
+{
+
+  std::cout << "Copy constructor called" << std::endl;
+  *this = src;
+}
 void Fixed::setRawBits(const int set)
 {
   fixed_point = set;
@@ -40,12 +46,6 @@ int Fixed::getRawBits(void) const
       fixed_point);
 }
 
-Fixed::Fixed(const Fixed &src)
-{
-
-  std::cout << "Copy constructor called" << std::endl;
-  *this = src;
-}
 
 int Fixed::toInt(void) const
 {

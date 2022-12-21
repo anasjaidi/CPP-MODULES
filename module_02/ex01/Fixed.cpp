@@ -56,7 +56,7 @@ int Fixed::toInt(void) const
 float Fixed::toFloat(void) const
 {
   float r = (float(fixed_point) / (1 << fractional_bits));
-  return r;
+  return r;  
 }
 
 std::ostream &operator<<(std::ostream &out, const Fixed &c)
