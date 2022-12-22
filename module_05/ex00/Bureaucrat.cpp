@@ -1,16 +1,12 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade)
+Bureaucrat::Bureaucrat(const std::string &n, int g) : name(n), grade(g)
 {
   std::cout << "Bureaucrat constructor called\n";
   if (grade > 150)
-  {
     throw GradeTooLowException();
-  }
   else if (grade < 1)
-  {
     throw GradeTooHighException();
-  }
 }
 
 Bureaucrat::~Bureaucrat()
@@ -20,12 +16,12 @@ Bureaucrat::~Bureaucrat()
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-  return "Bureaucrat: Exception Grade too high!";
+  return "Bureaucrat Grade too high!";
 }
 
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-  return "Bureaucrat: Exception Grade too low!";
+  return "Bureaucrat Grade too low!";
 }
 
 const std::string &Bureaucrat::getName() const
@@ -40,21 +36,19 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::inc()
 {
-  if (--grade < 1)
-  {
+  if (grade == 1)
     throw GradeTooHighException();
-  }
+  grade--;
 }
 
 void Bureaucrat::dec()
 {
-  if (++grade > 150)
-  {
+  if (grade == 150)
     throw GradeTooLowException();
-  }
+  grade++;
 }
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &bur)
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 {
-  return os << bur.getName() << ", bureaucrat grade " << bur.getGrade(), os;
+  return out << b.getName() << ", bureaucrat grade " << b.getGrade(), out;
 }

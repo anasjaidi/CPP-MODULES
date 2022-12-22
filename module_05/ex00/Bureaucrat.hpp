@@ -9,7 +9,7 @@ private:
   const std::string name;
   int grade;
 public:
-  Bureaucrat(const std::string &name, int grade);
+  Bureaucrat(const std::string &, int );
   ~Bureaucrat();
   class GradeTooHighException : public std::exception
   {
@@ -25,4 +25,4 @@ public:
   void dec();
 };
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &bur);
+std::ostream &operator<<(std::ostream &, const Bureaucrat &);
