@@ -1,6 +1,8 @@
-#pragma once
+#ifndef FORM_HPP
+# define FORM_HPP
 
-#include "./Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form {
   private:
@@ -8,7 +10,10 @@ class Form {
     bool is_signed;
     const int grade_to_sign;
     const int grade_to_exec;
+    Form();
   public:
+    Form(const Form &);
+    Form & operator = (const Form &);
     Form(const std::string &, const int&, const int&);
     ~Form();
     const std::string &get_name() const ;
@@ -24,6 +29,9 @@ class Form {
     {
       virtual const char *what(void) const throw();
     };
+    
 };
 
 std::ostream &operator<<(std::ostream &, const Form &);
+
+# endif

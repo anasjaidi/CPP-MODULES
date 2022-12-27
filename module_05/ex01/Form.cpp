@@ -4,6 +4,15 @@ Form::~Form()
 {
   std::cout << "Form destructor called\n";
 }
+Form::Form(const std::string &name, const int &grade_sign, const int &grad_exec) : name(name), grade_to_sign(grade_sign), grade_to_exec(grad_exec)
+{
+  std::cout << "Form Typed constructor called\n";
+}
+
+Form::Form() : grade_to_sign(0), grade_to_exec(0)
+{
+  std::cout << "Form  constructor called\n";
+}
 
 const std::string &Form::get_name() const
 {
@@ -42,4 +51,15 @@ std::ostream &operator<<(std::ostream &out, const Form &form)
 {
   out << form.get_name() << (form.get_signed() ? " (signed)" : " (not signed)") << ", grade required to sign it: " << form.get_grade_sign() << ", grade required to execute it: " << form.get_grade_exec();
   return out;
+}
+
+Form::Form(const Form &rhs) : name(rhs.get_name()), grade_to_sign(rhs.get_grade_sign()), grade_to_exec(rhs.get_grade_exec())
+{
+  std::cout << "copy constructor called\n";
+}
+
+Form &Form::operator=(const Form &rhs) {
+  (void)rhs;
+  std::cout << "copy assaingnement operator called\n";
+  return *this;
 }

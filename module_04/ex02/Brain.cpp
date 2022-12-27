@@ -12,7 +12,7 @@ Brain::~Brain()
 
 Brain &Brain::operator=(const Brain &src)
 {
-  std::cout << "Copy assignment operator called" << std::endl;
+  std::cout << "Brain Copy assignment operator called" << std::endl;
   for (size_t i = 0; i < 100; i++)
     ideas[i] = src.getIdea(i);
   return *this;
@@ -21,7 +21,7 @@ Brain &Brain::operator=(const Brain &src)
 Brain::Brain(const Brain &src)
 {
 
-  std::cout << "Copy constructor called" << std::endl;
+  std::cout << "Brain Copy constructor called" << std::endl;
   *this = src;
 }
 

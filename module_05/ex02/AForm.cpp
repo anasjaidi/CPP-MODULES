@@ -47,3 +47,20 @@ std::ostream &operator<<(std::ostream &out, const AForm &AForm)
   out << AForm.get_name() << (AForm.get_signed() ? " (signed)" : " (not signed)") << ", grade required to sign it: " << AForm.get_grade_sign() << ", grade required to execute it: " << AForm.get_grade_exec();
   return out;
 }
+
+AForm::AForm(const AForm &rhs) : name(rhs.get_name()), grade_to_sign(rhs.get_grade_sign()), grade_to_exec(rhs.get_grade_exec())
+{
+  std::cout << "copy constructor called\n";
+}
+
+AForm &AForm::operator=(const AForm &rhs)
+{
+  (void)rhs;
+  std::cout << "copy assaingnement operator called\n";
+  return *this;
+}
+
+AForm::AForm() : grade_to_sign(0), grade_to_exec(0)
+{
+  std::cout << "Form  constructor called\n";
+}
