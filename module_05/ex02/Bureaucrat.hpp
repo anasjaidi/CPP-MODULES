@@ -23,6 +23,7 @@ public:
   int getGrade() const;
   void inc();
   void dec();
+  
 };
 
 std::ostream &operator<<(std::ostream &, const Bureaucrat &);
