@@ -14,18 +14,20 @@ void ShrubberyCreationForm::excute(const Bureaucrat  &executor) const
 {
   if (!get_signed())
     throw FormNotSigned();
-  if (executor.getGrade() > get_grade_exec())
+  else if (executor.getGrade() > get_grade_exec())
+    throw GradeTooHighException();
+  else if (executor.getGrade() < 1)
     throw GradeTooLowException();
   std::ofstream outFile;
   outFile.open(get_name() + "_shrubbery");
   if (outFile.is_open())
   {
-    outFile << "   *   " << std::endl;
-    outFile << "  ***  " << std::endl;
-    outFile << " ***** " << std::endl;
-    outFile << "*******" << std::endl;
-    outFile << "   *   " << std::endl;
-    outFile << "   *   " << std::endl;
+    outFile << "   *           "  << "   *   " << std::endl;
+    outFile << "  ***          "  << "  ***  " << std::endl;
+    outFile << " *****         "  << " ***** " << std::endl;
+    outFile << "*******        "  << "*******" << std::endl;
+    outFile << "   *           "  << "   *   " << std::endl;
+    outFile << "   *           "  << "   *   " ;
   }
   else
   {

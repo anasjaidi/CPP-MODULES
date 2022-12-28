@@ -12,6 +12,8 @@ int main()
     s.excute(b);
     PresidentialPardonForm p = PresidentialPardonForm("presedent");
     p.excute(b);
+    b.executeForm(s);
+    std::cout << "---------------------- \n";
   }
   catch (const std::exception &e)
   {

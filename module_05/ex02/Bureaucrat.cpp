@@ -50,3 +50,12 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &b)
 {
   return out << b.getName() << ", bureaucrat grade " << b.getGrade(), out;
 }
+
+void Bureaucrat::executeForm(const AForm &form) {
+  if (grade > form.get_grade_exec())
+    throw GradeTooHighException();
+  else if (grade < 1)
+    throw GradeTooLowException();
+  else
+    std::cout << name << " executed " << form.get_name() << std::endl;
+}

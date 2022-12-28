@@ -2,6 +2,9 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -23,7 +26,7 @@ public:
   int getGrade() const;
   void inc();
   void dec();
-  
+  void executeForm(AForm const &form);
 };
 
 std::ostream &operator<<(std::ostream &, const Bureaucrat &);

@@ -14,7 +14,9 @@ void RobotomyRequestForm::excute(const Bureaucrat &executor) const
 {
   if (!get_signed())
     throw FormNotSigned();
-  if (executor.getGrade() > get_grade_exec())
+  else if (executor.getGrade() > get_grade_exec())
+    throw GradeTooHighException();
+  else if (executor.getGrade() < 1)
     throw GradeTooLowException();
   // Seed the random number generator with the current time.
   srand(time(NULL));
