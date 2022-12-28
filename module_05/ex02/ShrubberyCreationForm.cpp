@@ -10,7 +10,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
   std::cout << "ShrubberyCreationForm destructor called\n";
 }
 
-void ShrubberyCreationForm::functionality(void) {
+void ShrubberyCreationForm::excute(const Bureaucrat  &executor) const
+{
+  if (!get_signed())
+    throw FormNotSigned();
+  if (executor.getGrade() > get_grade_exec())
+    throw GradeTooLowException();
   std::ofstream outFile;
   outFile.open(get_name() + "_shrubbery");
   if (outFile.is_open())
@@ -26,6 +31,21 @@ void ShrubberyCreationForm::functionality(void) {
   {
     std::cout << "Error creating file." << std::endl;
   }
-
   outFile.close();
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 0, 0) {
+  std::cout << "Default Constructor called\n";
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs) : AForm("ShrubberyCreationForm", rhs.get_grade_sign(), rhs.get_grade_exec())
+{
+  std::cout << "Copy Constructor  called\n";
+
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
+  (void)rhs;
+  std::cout << "Copy assaignement  called\n";
+  return *this;
 }

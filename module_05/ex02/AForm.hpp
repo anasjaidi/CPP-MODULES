@@ -24,10 +24,15 @@ class AForm {
     {
       virtual const char *what(void) const throw();
     };
+    class FormNotSigned: public std::exception
+    {
+      virtual const char *what(void) const throw();
+    };
     class GradeTooLowException : public std::exception
     {
       virtual const char *what(void) const throw();
     };
+    virtual void excute(Bureaucrat const &executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &, const AForm &);
