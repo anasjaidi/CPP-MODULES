@@ -1,6 +1,6 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm(target, 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("ShrubberyCreationForm", 72, 45), target(target)
 {
   std::cout << "RobotomyRequestForm constuctor called\n";
 }
@@ -34,17 +34,17 @@ void RobotomyRequestForm::excute(const Bureaucrat &executor) const
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 0, 0)
 {
-  std::cout << "Default Constructor called\n";
+  std::cout << "RobotomyRequestForm Default Constructor called\n";
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &rhs) : AForm("RobotomyRequestForm", rhs.get_grade_sign(), rhs.get_grade_exec())
 {
-  std::cout << "Copy Constructor  called\n";
+  std::cout << "RobotomyRequestForm Copy Constructor  called\n";
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs)
 {
   (void)rhs;
-  std::cout << "Copy assaignement  called\n";
+  std::cout << "RobotomyRequestForm Copy assaignement  called\n";
   return *this;
 }

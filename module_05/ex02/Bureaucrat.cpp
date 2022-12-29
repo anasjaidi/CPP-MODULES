@@ -2,7 +2,7 @@
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name), grade(grade)
 {
-  std::cout << "Bureaucrat constructor called\n";
+  std::cout << "Bureaucrat typed constructor called\n";
   if (grade > 150)
     throw GradeTooLowException();
   else if (grade < 1)
@@ -58,4 +58,9 @@ void Bureaucrat::executeForm(const AForm &form) {
     throw GradeTooLowException();
   else
     std::cout << name << " executed " << form.get_name() << std::endl;
+}
+
+Bureaucrat::Bureaucrat()
+{
+  std::cout << "Bureaucrat Default constructor called" << std::endl;
 }

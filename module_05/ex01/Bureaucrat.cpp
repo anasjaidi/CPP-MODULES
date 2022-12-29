@@ -16,7 +16,7 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::~Bureaucrat()
 {
-  std::cout << "Bureaucrat destructor called\n";
+  std::cout << "Bureaucrat Bureaucrat destructor called\n";
 }
 
 const char *Bureaucrat::GradeTooHighException::what(void) const throw()

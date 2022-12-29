@@ -8,13 +8,14 @@ int main()
 {
   try
   {
-    // Bureaucrat b("anas", 12);
-    // ShrubberyCreationForm s = ShrubberyCreationForm("anas");
-    // s.excute(b);
-    // PresidentialPardonForm p = PresidentialPardonForm("presedent");
-    // p.excute(b);
-    // b.executeForm(s);
-    // std::cout << "---------------------- \n";
+    Bureaucrat b("bur", 1);
+    ShrubberyCreationForm s = ShrubberyCreationForm("sh");
+    s.excute(b);
+    PresidentialPardonForm p = PresidentialPardonForm("presedent");
+    p.beSigned(b);
+    p.excute(b);
+    b.executeForm(s);
+    std::cout << "---------------------- \n";
     Intern i;
     std::string name = "robotomy request";
     std::string target = "anas";

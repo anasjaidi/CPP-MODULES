@@ -1,6 +1,6 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", 72, 45), target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AForm("PresidentialPardonForm", 25, 5), target(target)
 {
   std::cout << "PresidentialPardonForm constuctor called\n";
 }
@@ -18,7 +18,7 @@ void PresidentialPardonForm::excute(const Bureaucrat &executor) const
     throw GradeTooHighException();
   else if (executor.getGrade() < 1)
     throw GradeTooLowException();
-  std::cout << "%s  has been pardoned by Zaphod Beeblebrox.\n" << target;
+  std::cout << target << " has been pardoned by Zaphod Beeblebrox.\n" << target;
 }
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 0, 0)

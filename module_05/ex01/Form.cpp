@@ -33,12 +33,12 @@ bool Form::get_signed() const {
 
 const char *Form::GradeTooHighException::what(void) const throw()
 {
-  return "Bureaucrat Exception Grade too high!";
+  return "Form Exception Grade too high!";
 }
 
 const char *Form::GradeTooLowException::what(void) const throw()
 {
-  return "Bureaucrat Exception Grade too low!";
+  return "Form Exception Grade too low!";
 }
 
 bool Form::beSigned(const Bureaucrat &b) {
@@ -55,11 +55,11 @@ std::ostream &operator<<(std::ostream &out, const Form &form)
 
 Form::Form(const Form &rhs) : name(rhs.get_name()), grade_to_sign(rhs.get_grade_sign()), grade_to_exec(rhs.get_grade_exec())
 {
-  std::cout << "copy constructor called\n";
+  std::cout << "Form copy constructor called\n";
 }
 
 Form &Form::operator=(const Form &rhs) {
   (void)rhs;
-  std::cout << "copy assaingnement operator called\n";
+  std::cout << "Form copy assaingnement operator called\n";
   return *this;
 }

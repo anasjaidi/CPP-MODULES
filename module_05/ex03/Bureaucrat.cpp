@@ -59,3 +59,8 @@ void Bureaucrat::executeForm(const AForm &form) {
   else
     std::cout << name << " executed " << form.get_name() << std::endl;
 }
+
+Bureaucrat::Bureaucrat()
+{
+  std::cout << "Bureaucrat Default constructor called" << std::endl;
+}

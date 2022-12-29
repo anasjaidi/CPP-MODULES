@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(target, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
   std::cout << "ShrubberyCreationForm constuctor called\n";
 }
@@ -19,7 +19,7 @@ void ShrubberyCreationForm::excute(const Bureaucrat  &executor) const
   else if (executor.getGrade() < 1)
     throw GradeTooLowException();
   std::ofstream outFile;
-  outFile.open(get_name() + "_shrubbery");
+  outFile.open(target + "_shrubbery");
   if (outFile.is_open())
   {
     outFile << "   *           "  << "   *   " << std::endl;
@@ -37,17 +37,17 @@ void ShrubberyCreationForm::excute(const Bureaucrat  &executor) const
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 0, 0) {
-  std::cout << "Default Constructor called\n";
+  std::cout << "ShrubberyCreationForm Default Constructor called\n";
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &rhs) : AForm("ShrubberyCreationForm", rhs.get_grade_sign(), rhs.get_grade_exec())
 {
-  std::cout << "Copy Constructor  called\n";
+  std::cout << "ShrubberyCreationForm Copy Constructor  called\n";
 
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
   (void)rhs;
-  std::cout << "Copy assaignement  called\n";
+  std::cout << "ShrubberyCreationForm Copy assaignement  called\n";
   return *this;
 }
