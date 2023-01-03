@@ -6,10 +6,10 @@ obj = $(src:%.cpp=%.o)
 
 all : $(name)
 
-$(name): $(obj) main.cpp
+$(name): $(obj) main.cpp whatever.hpp
 	c++ $(flags) main.cpp  $(obj) -o $(name)
 
-%.o: %.cpp whatever.hpp
+%.o: %.cpp 
 	c++ $(flags) -c $< -o $@
 
 clean:
