@@ -1,25 +1,79 @@
+// #include "Array.hpp"
+
+// int main(int, char **)
+// {
+//   try
+//   {
+//     Array<int> arr(10);
+
+//     for (size_t i = 0; i < static_cast<size_t>(arr.get_size()); i++)
+//       arr[i] = i; 
+    
+//     Array<int> cp = arr;
+
+//     for (size_t i = 0; i < static_cast<size_t>(cp.get_size()); i++)
+//       std::cout << cp[i] <<std::endl;
+
+//     cp[11];
+//   }
+//   catch(const std::exception& e)
+//   {
+//     std::cerr << e.what() << '\n';
+//   }
+  
+//   return 0;
+// }
+
+#include <iostream>
 #include "Array.hpp"
 
+#define MAX_VAL 750
 int main(int, char **)
 {
+  Array<int> numbers(MAX_VAL);
+  int *mirror = new int[MAX_VAL];
+  srand(time(NULL));
+  for (int i = 0; i < MAX_VAL; i++)
+  {
+    const int value = rand();
+    numbers[i] = value;
+    mirror[i] = value;
+  }
+  // SCOPE
+  {
+    Array<int> tmp = numbers;
+    Array<int> test(tmp);
+  }
+
+  for (int i = 0; i < MAX_VAL; i++)
+  {
+    if (mirror[i] != numbers[i])
+    {
+      std::cerr << "didn't save the same value!!" << std::endl;
+      return 1;
+    }
+  }
   try
   {
-    Array<int> arr(10);
-
-    for (size_t i = 0; i < static_cast<size_t>(arr.get_size()); i++)
-      arr[i] = i; 
-    
-    Array<int> cp = arr;
-
-    for (size_t i = 0; i < static_cast<size_t>(cp.get_size()); i++)
-      std::cout << cp[i] <<std::endl;
-
-    cp[11];
+    numbers[-2] = 0;
   }
-  catch(const std::exception& e)
+  catch (const std::exception &e)
   {
     std::cerr << e.what() << '\n';
   }
-  
+  try
+  {
+    numbers[MAX_VAL] = 0;
+  }
+  catch (const std::exception &e)
+  {
+    std::cerr << e.what() << '\n';
+  }
+
+  for (int i = 0; i < MAX_VAL; i++)
+  {
+    numbers[i] = rand();
+  }
+  delete[] mirror; //
   return 0;
 }
