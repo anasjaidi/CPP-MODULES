@@ -11,6 +11,7 @@ class Span {
     int length;
   public:
     Span();
+    void  addNumber(int &n);
     Span(int &);
     Span(const Span &);
     Span &operator=(const Span &);

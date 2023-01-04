@@ -15,7 +15,14 @@ Span::Span(const Span &rhs) {
   *this = rhs;
 }
 
-Span &Span::operator=(const Span &rhs) {
+void Span::addNumber(int &n) {
+  if (length == N)  throw std::exception();
+  _tab[length] = n;
+  length++;
+}
+
+    Span &Span::operator=(const Span &rhs)
+{
   N = rhs.N;
   _tab = new int[N];
   for (size_t i = 0; i < static_cast<size_t>(N); i++)
