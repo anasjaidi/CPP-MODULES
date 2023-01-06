@@ -8,7 +8,7 @@ int main()
 
   try
   {
-    bool founded = easyfind(v, 11);
+    int founded = easyfind(v, 11);
     std::cout << "founded: " << founded << std::endl;
   }
   catch (const std::exception &e)

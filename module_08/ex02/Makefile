@@ -6,7 +6,7 @@ obj = $(src:%.cpp=%.o)
 
 all : $(name)
 
-$(name): $(obj) main.cpp whatever.hpp
+$(name): $(obj) main.cpp MutantStack.hpp
 	c++ $(flags) main.cpp  $(obj) -o $(name)
 
 %.o: %.cpp 
