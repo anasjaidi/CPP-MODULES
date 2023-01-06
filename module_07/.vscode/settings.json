@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "*.excalidraw": "json",
-    "*.excalidrawlib": "json",
-    "algorithm": "cpp",
-    "chrono": "cpp",
-    "limits": "cpp"
-  }
-}
