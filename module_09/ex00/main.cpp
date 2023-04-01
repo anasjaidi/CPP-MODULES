@@ -3,12 +3,7 @@
 //
 
 
-# include <iostream>
-# include <filesystem>
-# include <fstream>
-# include <map>
-
-# include <sstream>
+# include "BitcoinExchange.hpp"
 
 
 std::pair<std::string, float> parse_line(std::string &line) {
@@ -54,14 +49,8 @@ int main(int ac, char **av) {
 
     std::string in_file(av[1]);
 
-    std::fstream infile(in_file.c_str());
     std::fstream data_file("data.csv");
 
-    if (!infile.is_open())
-        return (
-                std::cout << "Error: could not open file." << std::endl,
-                        1
-        );
     if (!data_file.is_open())
         return (
                 std::cout << "Error: could not open file." << std::endl,
@@ -74,8 +63,12 @@ int main(int ac, char **av) {
 
     std::map<std::string, float> data = store_data(data_file);
 
-    for (std::map<std::string, float>::iterator it = data.begin(); it != data.end(); it++) {
-        std::cout << it->first << " | " << it->second << std::endl;
+
+    try {
+
+        BitcoinExchange  *btc = new BitcoinExchange(data, in_file);
+    } catch (std::exception &err) {
+        std::cerr << err.what() << std::endl;
     }
 
     return 0;
