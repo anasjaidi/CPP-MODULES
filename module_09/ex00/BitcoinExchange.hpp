@@ -24,6 +24,8 @@ public:
 
     virtual ~BitcoinExchange();
 
+    std::pair<std::string, float> parse_line(std::string &);
+
 class BitcoinExchangeErrors : public std::exception {
 public:
     enum ErrorsCodes {

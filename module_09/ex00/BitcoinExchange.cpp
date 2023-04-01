@@ -33,3 +33,8 @@ const char *BitcoinExchange::BitcoinExchangeErrors::what() const throw() {
             break;
     }
 }
+
+
+std::pair<std::string, float> BitcoinExchange::parse_line(std::string &) {
+
+}
