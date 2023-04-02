@@ -15,6 +15,8 @@ class BitcoinExchange {
 private:
     std::map<std::string, float> data;
     std::fstream infile;
+    bool valid_date(std::string &date);
+
 public:
     BitcoinExchange(const std::map<std::string, float> &data, const std::string &infile);
 
@@ -24,7 +26,6 @@ public:
 
     virtual ~BitcoinExchange();
 
-    bool valid_date(std::string &date);
     std::string get_line();
 
     std::pair<std::string, float> parse_line(std::string &);
