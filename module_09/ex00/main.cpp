@@ -34,6 +34,13 @@ std::map<std::string, float> store_data(std::fstream &infile) {
     return data;
 }
 
+bool is_all_spaces(std::string &line) {
+    for (int i = 0; i < line.length(); ++i) {
+        if (!std::isspace(line[i])) return false;
+    }
+    return true;
+}
+
 
 int main(int ac, char **av) {
     if (ac > 2)
@@ -70,14 +77,18 @@ int main(int ac, char **av) {
 
         std::string line = btc->get_line();
 
-        while (!line.empty()) {
+        while (!(btc->getInfile().eof() && line.empty())) {
+
+            if (line.empty() || is_all_spaces(line)) {
+                line = btc->get_line();
+                continue;
+            }
 
             std::pair<std::string, float>r = btc->parse_line(line);
-            std::cout << r.first << " | " << r.second << std::endl;
+
             line = btc->get_line();
+
         }
-
-
     } catch (std::exception &err) {
 
         std::cerr << err.what() << std::endl;

@@ -38,6 +38,8 @@ const char *BitcoinExchange::BitcoinExchangeErrors::what() const throw() {
 std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
     int pos = line.find(',');
 
+    line = line.substr(line.find_first_not_of(' '));
+    line = line.substr(0, line.find_last_not_of(' ') + 1);
 
     if (pos == -1)
         return (
@@ -73,6 +75,8 @@ std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
     );
 }
 
+
+
 bool BitcoinExchange::valid_date(std::string &date) {
     int count = std::count(date.begin(), date.end(), '-');
 
@@ -95,9 +99,6 @@ bool BitcoinExchange::valid_date(std::string &date) {
 
     int day = std::stoi(day_str.empty() ? "0" : day_str);
 
-    std::cout << year << " | " << month << " | " << day << std::endl;
-
-    return true;
 
     if (month < 1 || month > 12) {
         return false;
