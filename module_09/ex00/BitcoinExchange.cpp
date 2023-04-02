@@ -40,7 +40,7 @@ std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
 
     if (line.find(',', pos + 1) != -1)
         return (
-                std::make_pair("Error", -1)
+                std::make_pair("Error: bad arguments", -1)
         );
 
     line = line.substr(line.find_first_not_of(' '));
@@ -48,11 +48,11 @@ std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
 
     if (pos == -1)
         return (
-          std::make_pair("Error", -1)
+          std::make_pair("Error: no quantity", -1)
         );
     else if (pos + 1 == line.length() )
         return (
-                std::make_pair("Error", -1)
+                std::make_pair("Error: no quantity", -1)
         );
 
 
@@ -68,11 +68,11 @@ std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
 
     if (q < 0 || q > 1000)
         return (
-                std::make_pair("Error", -1)
+                std::make_pair("Error: number is To High", -1)
         );
     if (!this->valid_date(date))
         return (
-                std::make_pair("Error", -1)
+                std::make_pair("Error: date is not valid", -1)
         );
 
     return (
@@ -127,7 +127,7 @@ bool BitcoinExchange::valid_date(std::string &date) {
     }
 
     // check if year is valid
-    if (year < 2008) {
+    if (year < 2008 || year > 9999) {
         return false;
     } else if (year == 2008 && month == 01 && day == 1)
         return false;

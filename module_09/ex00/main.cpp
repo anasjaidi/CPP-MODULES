@@ -86,7 +86,16 @@ int main(int ac, char **av) {
 
             std::pair<std::string, float>r = btc->parse_line(line);
 
-            std::cout << r.first << " | " << r.second << std::endl;
+            if (r.second == -1) {
+                std::cout << r.first << std::endl;
+                line = btc->get_line();
+                continue;
+            }
+
+            std::map<std::string , float>::iterator it = data.lower_bound(r.first);
+            if (it->first != r.first) it--;
+            if (it != data.end()) std::cout << r.first << " => " << r.second <<  " = " << it->second  << " | " << it->first<< std::endl;;
+
 
             line = btc->get_line();
 
