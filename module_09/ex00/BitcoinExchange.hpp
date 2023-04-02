@@ -24,6 +24,9 @@ public:
 
     virtual ~BitcoinExchange();
 
+    bool valid_date(std::string &date);
+    std::string get_line();
+
     std::pair<std::string, float> parse_line(std::string &);
 
 class BitcoinExchangeErrors : public std::exception {

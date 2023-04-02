@@ -67,8 +67,21 @@ int main(int ac, char **av) {
     try {
 
         BitcoinExchange  *btc = new BitcoinExchange(data, in_file);
+
+        std::string line = btc->get_line();
+
+        while (!line.empty()) {
+
+            std::pair<std::string, float>r = btc->parse_line(line);
+            std::cout << r.first << " | " << r.second << std::endl;
+            line = btc->get_line();
+        }
+
+
     } catch (std::exception &err) {
+
         std::cerr << err.what() << std::endl;
+
     }
 
     return 0;
