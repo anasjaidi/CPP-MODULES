@@ -3,4 +3,4 @@ project(ft_irc)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(PmergeMe main.cpp PmergeMe.cpp PmergeMe.hpp)
+add_executable(PmergeMe main.cpp pmerge_me.cpp pmerge_me.hpp)
