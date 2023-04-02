@@ -80,13 +80,19 @@ bool BitcoinExchange::valid_date(std::string &date) {
 
     int pos = date.find('-', 0), oldpos = pos;
 
-    int year = std::stoi(date.substr(0, pos));
+    std::string year_str = date.substr(0, pos);
+
+    int year = std::stoi(year_str.empty() ? "0" : year_str);
 
     pos = date.find('-', pos + 1);
 
-    int  month = std::stoi(std::string(date.data() + oldpos + 1, pos - oldpos - 1));
+    std::string month_str = std::string(date.data() + oldpos + 1, pos - oldpos - 1);
 
-    int day = std::stoi(date.substr(pos + 1, date.length()));
+    int  month = std::stoi(month_str.empty() ? "0" : month_str);
+
+    std::string day_str = date.substr(pos + 1, date.length());
+
+    int day = std::stoi(day_str.empty() ? "0" : day_str);
 
 
     if (month < 1 || month > 12) {
