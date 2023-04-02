@@ -38,6 +38,11 @@ const char *BitcoinExchange::BitcoinExchangeErrors::what() const throw() {
 std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
     int pos = line.find(',');
 
+    if (line.find(',', pos + 1) != -1)
+        return (
+                std::make_pair("Error", -1)
+        );
+
     line = line.substr(line.find_first_not_of(' '));
     line = line.substr(0, line.find_last_not_of(' ') + 1);
 

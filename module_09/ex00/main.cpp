@@ -86,6 +86,8 @@ int main(int ac, char **av) {
 
             std::pair<std::string, float>r = btc->parse_line(line);
 
+            std::cout << r.first << " | " << r.second << std::endl;
+
             line = btc->get_line();
 
         }
