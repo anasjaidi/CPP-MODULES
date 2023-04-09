@@ -15,20 +15,34 @@ int main(int ac, char **av) {
 
     RPN *rpn = new RPN();
 
-    for (int i = 0; i < line.length(); ++i) {
+    int found_in_begin = true;
 
-        if (std::isspace(line[i]))
-            continue;
-        else if (std::isdigit(line[i])) {
+    try {
+        for (int i = 0; i < line.length(); ++i) {
 
-            rpn->push_to_stack(line[i] - 48);
+            if (std::isspace(line[i]))
+                continue;
+            else if (std::isdigit(line[i])) {
+                found_in_begin = false;
+                rpn->push_to_stack(line[i] - 48);
 
-        } else if (!(rpn->operate(line[i]))){
+            } else if (!(rpn->operate(line[i])) || found_in_begin){
 
-            std::cerr << "Error" << std::endl;
-            return 1;
+                std::cerr << "Error" << std::endl;
+                return 1;
+            }
         }
+
+    } catch (std::exception &err) {
+        return (
+                std::cerr << "Error." << std::endl,
+                1
+            );
     }
 
+    if (rpn->getNums().size() != 1) return (
+            std::cerr << "operator is missing" << std::endl,
+            1
+    );
     std::cout << rpn->get_top() << std::endl;
 }

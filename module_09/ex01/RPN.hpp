@@ -14,6 +14,9 @@ private:
     std::stack<int> nums;
 public:
     bool operate(char oper);
+
+    const std::stack<int> &getNums() const;
+
     void push_to_stack(int num);
     const int &get_top();
     void multiply();
