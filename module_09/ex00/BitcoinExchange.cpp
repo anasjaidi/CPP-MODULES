@@ -34,17 +34,61 @@ const char *BitcoinExchange::BitcoinExchangeErrors::what() const throw() {
     }
 }
 
+bool BitcoinExchange::valid_quantity(std::string &quantity) {
+
+    int i = 0;
+
+    quantity = quantity.substr(quantity.find_first_not_of(" \\t\\n\\v\\f\\r"));
+    quantity = quantity.substr(0, quantity.find_last_not_of(" \\t\\n\\v\\f\\r") + 1);
+    if (quantity[i] == '+') i++;
+
+    int dot_count = std::count(quantity.begin(), quantity.end(), '.');
+
+    if (dot_count > 1) return false;
+
+    while (i < quantity.length()) {
+        if (!std::isdigit(quantity[i]) && quantity[i] != '.') return false;
+        i++;
+    }
+
+
+    return true;
+}
+
+bool BitcoinExchange::check_first_line_if_valid(std::string &quantity) {
+    int pipes_count = std::count(quantity.begin(), quantity.end(), '|');
+
+    int pos = quantity.find('|');
+
+    if (pipes_count != 1 || pos == -1) return false;
+
+    std::string date = quantity.substr(0, pos);
+
+    date = date.substr(date.find_first_not_of(" \t\n\v\f\r"));
+    date = date.substr(0, date.find_last_not_of(" \t\n\v\f\r") + 1);
+
+    std::string q = quantity.substr(pos + 1, quantity.length());
+
+    q = q.substr(q.find_first_not_of(" \t\n\v\f\r"));
+    q = q.substr(0, q.find_last_not_of(" \t\n\v\f\r") + 1);
+
+    if (date != "date" || q != "value") return false;
+
+    return true;
+
+
+}
 
 std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
-    int pos = line.find(',');
+    int pos = line.find('|');
 
-    if (line.find(',', pos + 1) != -1)
+    if (line.find('|', pos + 1) != -1)
         return (
                 std::make_pair("Error: bad arguments", -1)
         );
 
-    line = line.substr(line.find_first_not_of(' '));
-    line = line.substr(0, line.find_last_not_of(' ') + 1);
+    line = line.substr(line.find_first_not_of(" \t\n\v\f\r"));
+    line = line.substr(0, line.find_last_not_of(" \t\n\v\f\r") + 1);
 
     if (pos == -1)
         return (
@@ -59,6 +103,11 @@ std::pair<std::string, float> BitcoinExchange::parse_line(std::string &line) {
     std::string date = line.substr(0, pos);
 
     std::string quantity = line.substr(pos + 1, line.length());
+
+    if (!valid_quantity(quantity))
+        return (
+                std::make_pair("Error: invalid quantity", -1)
+        );
 
     std::stringstream ss(quantity);
 

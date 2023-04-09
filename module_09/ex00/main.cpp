@@ -83,6 +83,25 @@ int main(int ac, char **av) {
                 line = btc->get_line();
                 continue;
             }
+            else {
+                break;
+            }
+        }
+
+        if (!btc->check_first_line_if_valid(line)) {
+//            throw std::exception("Error: first line invalid, expected 'date | quantity'");
+            std::cerr << "Error: first line invalid, expected 'date | value'" << std::endl;
+            return 1;
+        }
+
+        line  = btc->get_line();
+
+        while (!(btc->getInfile().eof() && line.empty())) {
+
+            if (line.empty() || is_all_spaces(line)) {
+                line = btc->get_line();
+                continue;
+            }
 
             std::pair<std::string, float>r = btc->parse_line(line);
 
@@ -94,7 +113,7 @@ int main(int ac, char **av) {
 
             std::map<std::string , float>::iterator it = data.lower_bound(r.first);
             if (it->first != r.first) it--;
-            if (it != data.end()) std::cout << r.first << " => " << r.second <<  " = " << it->second  << " | " << it->first<< std::endl;;
+            if (it != data.end()) std::cout << r.first << " => " << r.second <<  " = " << it->second * r.second << std::endl;;
 
 
             line = btc->get_line();

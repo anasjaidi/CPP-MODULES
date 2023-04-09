@@ -30,6 +30,10 @@ public:
 
     std::pair<std::string, float> parse_line(std::string &);
 
+
+    bool valid_quantity(std::string &quantity);
+    bool check_first_line_if_valid(std::string &quantity);
+
 class BitcoinExchangeErrors : public std::exception {
 public:
     enum ErrorsCodes {
