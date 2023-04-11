@@ -65,3 +65,101 @@ bool PmergeMe::list_is_sorted() {
     }
     return true;
 }
+
+void PmergeMe::sort_vec() {
+    split_vec(vec);
+}
+
+void PmergeMe::split_vec(std::vector<int> &arr) {
+    if (arr.size() <= 1)
+        return ;
+    std::vector<int> rhs;
+    create_sub_vec(rhs, arr, 0, (int)(arr.size() / 2));
+    std::vector<int> lhs;
+    create_sub_vec(lhs, arr, (int)(arr.size() / 2), (int)arr.size());
+    split_vec(rhs);
+    split_vec(lhs);
+    merge_vec(rhs, lhs, arr);
+}
+
+void PmergeMe::merge_vec(std::vector<int> &rhs, std::vector<int> &lhs, std::vector<int> &arr) {
+    int i = 0, l = 0, r = 0;
+
+    while (l < lhs.size() && r < rhs.size()) {
+        if (lhs[l] > rhs[r]) {
+            arr[i++] = rhs[r++];
+        } else {
+            arr[i++] = lhs[l++];
+        }
+    }
+
+    while (l < lhs.size()) {
+        arr[i++] = lhs[l++];
+    }
+
+    while (r < rhs.size()) {
+        arr[i++] = rhs[r++];
+    }
+}
+
+void PmergeMe::sort_list() {
+    split_list(list);
+}
+
+void PmergeMe::split_list(std::list<int> &arr) {
+    if (arr.size() <= 1)
+        return ;
+    std::list<int> rhs;
+    create_sub_list(rhs, arr, 0, (int)(arr.size() / 2));
+    std::list<int> lhs;
+    create_sub_list(lhs, arr, (int)(arr.size() / 2), (int)arr.size());
+
+    split_list(rhs);
+    split_list(lhs);
+    merge_list(rhs, lhs, arr);
+}
+
+void PmergeMe::create_sub_vec(std::vector<int> &to, std::vector<int> &from, int f, int t) {
+    for (int i = f; i < t; i++) {
+        to.push_back(from[i]);
+    }
+}
+
+void PmergeMe::create_sub_list(std::list<int> &to, std::list<int> &from, int f, int t) {
+    std::list<int>::iterator it_f = from.begin();
+    std::advance(it_f, f);
+
+    for (int i = f; i < t; ++i) {
+        to.push_back(*it_f);
+    }
+}
+
+void PmergeMe::merge_list(std::list<int> &rhs, std::list<int> &lhs, std::list<int> &arr) {
+    std::list<int>::iterator it_arr = arr.begin();
+    std::list<int>::iterator it_rhs = rhs.begin();
+    std::list<int>::iterator it_lhs = lhs.begin();
+
+    while (it_lhs != lhs.end() && it_rhs != rhs.end()) {
+        if (*it_lhs > *it_rhs) {
+            arr.insert(it_arr, *it_rhs);
+            it_rhs++;
+            it_arr++;
+        } else {
+            arr.insert(it_arr, *it_lhs);
+            it_lhs++;
+            it_arr++;
+        }
+    }
+
+    while (it_lhs != lhs.end()) {
+        arr.insert(it_arr, *it_lhs);
+        it_arr++;
+        it_lhs++;
+    }
+    while (it_rhs != rhs.end()) {
+        arr.insert(it_arr, *it_rhs);
+        it_arr++;
+        it_rhs++;
+    }
+
+}

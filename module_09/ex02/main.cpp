@@ -8,7 +8,7 @@ int main (int ac, char **av) {
 
     PmergeMe merge;
 
-    for (int i = 0; i < ac; ++i) {
+    for (int i = 1; i < ac; ++i) {
         int  num = atoi(av[i]);
         merge.add_num(num);
     }
@@ -17,7 +17,10 @@ int main (int ac, char **av) {
         return 1;
     }
 
-    merge.render_list_nums();
+//    merge.render_list_nums();
+//    merge.render_vec_nums();
+    std::cout << "here" << std::endl;
+    merge.sort_vec();
     merge.render_vec_nums();
     return (0);
 }

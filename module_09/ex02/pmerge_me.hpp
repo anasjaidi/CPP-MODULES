@@ -28,6 +28,16 @@ public:
 
     bool vec_is_sorted();
     bool list_is_sorted();
+
+    void sort_vec();
+    void split_vec(std::vector<int> &arr);
+    void merge_vec(std::vector<int> &rhs, std::vector<int> &lhs, std::vector<int> &arr);
+    void sort_list();
+    void split_list(std::list<int> &arr);
+    void merge_list(std::list<int> &rhs, std::list<int> &lhs, std::list<int> &arr);
+
+    void create_sub_vec(std::vector<int> &to, std::vector<int> &from, int f, int t);
+    void create_sub_list(std::list<int> &to, std::list<int> &from, int f, int t);
 };
 
 
